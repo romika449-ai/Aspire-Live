@@ -1,7 +1,7 @@
 // ============================================================
 // 🔴 आपका .m3u8 लिंक (ClassPlus)
 // ============================================================
-const DEFAULT_VIDEO_URL = "https://vs.classplusapp.com/hls/6a6d962e1b8a64aaa73b48ad/index.m3u8";
+const DEFAULT_VIDEO_URL = "https://vs.classplusapp.com/hls/6a7089aae86acfbc9dbb33f5/index.m3u8";
 
 let hls = null;
 const video = document.getElementById('videoPlayer');
