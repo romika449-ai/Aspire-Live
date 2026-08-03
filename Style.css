@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  background: #1a1a2e;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid #2a2a4e;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.header h1 {
+  font-size: 24px;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.live-badge {
+  background: #ff0000;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  animation: blink 1.2s infinite;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-badge::before {
+  content: "●";
+  font-size: 18px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.video-wrapper {
+  position: relative;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+#videoPlayer {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+}
+
+/* ============================================================ */
+/* 🟢 साइड में लाइव बटन */
+/* ============================================================ */
+.live-side-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 0, 0, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease;
+  writing-mode: vertical-lr;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.live-side-btn:hover {
+  transform: translateY(-50%) scale(1.08);
+  background: rgba(255, 0, 0, 1);
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+}
+
+.live-side-btn .live-dot {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1s infinite;
+}
+
+/* ============================================================ */
+/* 🎛️ रेज़ोल्यूशन कंट्रोल (वीडियो प्लेयर के अंदर नीचे-बाएँ) */
+/* ============================================================ */
+.resolution-control {
+  position: absolute;
+  bottom: 60px;
+  left: 16px;
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.video-wrapper:hover .resolution-control {
+  opacity: 1;
+}
+
+.res-btn {
+  background: transparent;
+  color: #aaa;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.res-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.res-btn.active {
+  color: #fff;
+  background: #f7971e;
+  box-shadow: 0 0 20px rgba(247, 151, 30, 0.3);
+}
+
+/* ============================================================ */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding: 12px 18px;
+  background: #12122a;
+  border-radius: 12px;
+  border: 1px solid #2a2a4e;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.viewer-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.viewer-count .number {
+  font-weight: 800;
+  font-size: 22px;
+  background: linear-gradient(135deg, #00c6fb, #005bea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #00ff88;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.status-text {
+  color: #00ff88;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+  border-top: 1px solid #1a1a3e;
+  padding-top: 18px;
+}
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+  border-left: 3px solid #ff6b6b;
+  display: none;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+/* ============================================================ */
+/* 📱 मोबाइल रिस्पॉन्सिव */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .live-side-btn {
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    writing-mode: horizontal-tb;
+  }
+
+  .resolution-control {
+    bottom: 50px;
+    left: 10px;
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .res-btn {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+  .header h1 {
+    font-size: 18px;
+  }
+  .status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
