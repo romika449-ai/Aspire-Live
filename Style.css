@@ -108,10 +108,10 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: 0.3s ease;
   writing-mode: vertical-lr;
   letter-spacing: 2px;
   z-index: 10;
+  transition: 0.3s ease;
 }
 
 .live-side-btn:hover {
@@ -130,50 +130,86 @@ body {
 }
 
 /* ============================================================ */
-/* 🎛️ रेज़ोल्यूशन कंट्रोल (वीडियो प्लेयर के अंदर नीचे-बाएँ) */
+/* 🎛️ रेज़ोल्यूशन बटन — प्लेयर के कंट्रोल बार में */
 /* ============================================================ */
-.resolution-control {
+.resolution-btn {
   position: absolute;
-  bottom: 60px;
-  left: 16px;
-  display: flex;
-  gap: 6px;
+  bottom: 18px;
+  right: 80px;
   background: rgba(0, 0, 0, 0.7);
-  padding: 8px 12px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 10;
-  flex-wrap: wrap;
-}
-
-.video-wrapper:hover .resolution-control {
-  opacity: 1;
-}
-
-.res-btn {
-  background: transparent;
-  color: #aaa;
+  color: #fff;
   border: none;
-  padding: 4px 10px;
   border-radius: 6px;
-  font-size: 12px;
+  padding: 6px 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 20;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resolution-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.resolution-btn .arrow {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+/* ============================================================ */
+/* 📋 रेज़ोल्यूशन ड्रॉपडाउन मेनू */
+/* ============================================================ */
+.resolution-menu {
+  position: absolute;
+  bottom: 58px;
+  right: 80px;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  padding: 6px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 25;
+  min-width: 120px;
+  display: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.resolution-menu.show {
+  display: block;
+}
+
+.resolution-menu .res-item {
+  padding: 8px 20px;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
   transition: 0.2s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
 }
 
-.res-btn:hover {
-  color: #fff;
+.resolution-menu .res-item:hover {
   background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
-.res-btn.active {
-  color: #fff;
-  background: #f7971e;
-  box-shadow: 0 0 20px rgba(247, 151, 30, 0.3);
+.resolution-menu .res-item.active {
+  color: #f7971e;
+  font-weight: 700;
+}
+
+.resolution-menu .res-item.active::after {
+  content: " ✓";
+  color: #f7971e;
 }
 
 /* ============================================================ */
@@ -255,16 +291,17 @@ body {
     writing-mode: horizontal-tb;
   }
 
-  .resolution-control {
-    bottom: 50px;
-    left: 10px;
-    padding: 6px 10px;
-    gap: 4px;
+  .resolution-btn {
+    right: 60px;
+    bottom: 14px;
+    font-size: 11px;
+    padding: 4px 10px;
   }
 
-  .res-btn {
-    font-size: 10px;
-    padding: 3px 7px;
+  .resolution-menu {
+    right: 60px;
+    bottom: 48px;
+    min-width: 100px;
   }
 }
 
