@@ -10,20 +10,23 @@
 <body>
 
   <div class="container">
+    <!-- हैडर -->
     <div class="header">
       <h1>📺 लाइव स्ट्रीम</h1>
       <div class="live-badge">लाइव</div>
     </div>
 
+    <!-- वीडियो प्लेयर -->
     <div class="video-wrapper">
       <video id="videoPlayer" controls playsinline autoplay></video>
       
-      <!-- साइड में लाइव बटन -->
-      <button class="live-side-btn" id="liveBtn" title="लाइव स्ट्रीम पर जाएँ">
+      <!-- साइड में लाइव बटन (क्लिक करने पर रिफ्रेश) -->
+      <button class="live-side-btn" id="refreshLiveBtn">
         <span class="live-dot"></span> लाइव
       </button>
     </div>
 
+    <!-- स्टेटस बार -->
     <div class="status-bar">
       <div class="viewer-count">
         <span class="status-dot"></span>
@@ -35,7 +38,10 @@
       </div>
     </div>
 
+    <!-- एरर मैसेज -->
     <div id="errorMsg" class="error-msg">❌ वीडियो लोड नहीं हुआ। लिंक एक्सपायर हो सकता है।</div>
+    
+    <!-- फुटर -->
     <div class="footer">⚡ Render पर होस्ट किया गया</div>
   </div>
 
