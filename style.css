@@ -88,7 +88,7 @@ body {
 }
 
 /* ============================================================ */
-/* 🟢 साइड में लाइव बटन */
+/* 🟢 साइड में लाइव बटन (सिर्फ रिफ्रेश करेगा) */
 /* ============================================================ */
 .live-side-btn {
   position: absolute;
@@ -130,20 +130,97 @@ body {
 }
 
 /* ============================================================ */
-/* 🎛️ रेज़ोल्यूशन बटन — प्लेयर के कंट्रोल बार में */
-/* ============================================================ */
-.resolution-btn {
-  position: absolute;
-  bottom: 18px;
-  right: 80px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-size: 13px;
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding: 12px 18px;
+  background: #12122a;
+  border-radius: 12px;
+  border: 1px solid #2a2a4e;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.viewer-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.viewer-count .number {
+  font-weight: 800;
+  font-size: 22px;
+  background: linear-gradient(135deg, #00c6fb, #005bea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #00ff88;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.status-text {
+  color: #00ff88;
   font-weight: 600;
-  cursor: pointer;
+  font-size: 15px;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+  border-top: 1px solid #1a1a3e;
+  padding-top: 18px;
+}
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+  border-left: 3px solid #ff6b6b;
+  display: none;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+/* ============================================================ */
+/* 📱 मोबाइल रिस्पॉन्सिव */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .live-side-btn {
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    writing-mode: horizontal-tb;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+  .header h1 {
+    font-size: 18px;
+  }
+  .status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}  cursor: pointer;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   z-index: 20;
